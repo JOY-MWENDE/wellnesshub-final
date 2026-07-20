@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Sign In - WellnessHub</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/login.css">
+
+    <!-- PWA: manifest + icons -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+    <link rel="apple-touch-icon" href="icons/icon-180.png">
+
+    <!-- PWA: iOS standalone app support -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="WellnessHub">
+
+    <!-- PWA: Android/Chrome standalone app support -->
+    <meta name="mobile-web-app-capable" content="yes">
+</head>
+<body class="login-page">
+
+    <div class="login-bg" aria-hidden="true">
+        <span class="login-bg-shape login-bg-shape--one"></span>
+        <span class="login-bg-shape login-bg-shape--two"></span>
+        <span class="login-bg-shape login-bg-shape--three"></span>
+    </div>
+
+    <main class="login-shell">
+        <div class="login-card glass-card fade-in">
+            <header class="login-header text-center">
+                <a class="login-brand" href="/">
+                    <i class="fa-solid fa-heart-pulse" aria-hidden="true"></i>
+                    <span>WellnessHub</span>
+                </a>
+                <h1 class="login-title">Welcome back</h1>
+                <p class="login-subtitle">Sign in to continue your wellness journey</p>
+            </header>
+
+            <div id="loginAlert" class="login-alert alert d-none" role="alert" aria-live="polite"></div>
+
+            <form id="loginForm" class="login-form" novalidate>
+                <div class="form-group mb-3">
+                    <label for="loginEmail" class="form-label login-label">Email address</label>
+                    <div class="input-group login-input-group">
+                        <span class="input-group-text login-input-icon" aria-hidden="true">
+                            <i class="fa-solid fa-envelope"></i>
+                        </span>
+                        <input
+                            type="email"
+                            class="form-control login-input"
+                            id="loginEmail"
+                            name="email"
+                            autocomplete="email"
+                            inputmode="email"
+                            placeholder="you@example.com"
+                            required
+                            aria-describedby="loginEmailFeedback"
+                        >
+                    </div>
+                    <div id="loginEmailFeedback" class="invalid-feedback login-field-error"></div>
+                </div>
+
+                <div class="form-group mb-3">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <label for="loginPassword" class="form-label login-label mb-0">Password</label>
+                        <a href="#" class="login-link-small">Forgot password?</a>
+                    </div>
+                    <div class="input-group login-input-group">
+                        <span class="input-group-text login-input-icon" aria-hidden="true">
+                            <i class="fa-solid fa-lock"></i>
+                        </span>
+                        <input
+                            type="password"
+                            class="form-control login-input login-input-password"
+                            id="loginPassword"
+                            name="password"
+                            autocomplete="current-password"
+                            placeholder="Enter your password"
+                            required
+                            minlength="6"
+                            aria-describedby="loginPasswordFeedback passwordToggleHint"
+                        >
+                        <button
+                            type="button"
+                            class="btn login-password-toggle touch-target"
+                            id="passwordToggle"
+                            aria-label="Show password"
+                            aria-pressed="false"
+                            aria-controls="loginPassword"
+                        >
+                            <i class="fa-solid fa-eye" id="passwordToggleIcon" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                    <span id="passwordToggleHint" class="visually-hidden">Password visibility can be toggled</span>
+                    <div id="loginPasswordFeedback" class="invalid-feedback login-field-error"></div>
+                </div>
+
+                <div class="form-check login-remember mb-4">
+                    <input class="form-check-input" type="checkbox" id="rememberMe" name="rememberMe">
+                    <label class="form-check-label" for="rememberMe">Keep me signed in</label>
+                </div>
+
+                <button type="submit" class="btn btn-primary login-submit touch-btn w-100" id="loginSubmitBtn">
+                    <span class="login-submit-text">Sign In</span>
+                    <span class="login-submit-spinner spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                </button>
+            </form>
+
+            <p class="login-footer text-center mb-0">
+                Don't have an account?
+                <a href="register.html" class="login-link">Create one</a>
+            </p>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/api-client.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/pwa.js"></script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>WellnessHub Test</title>
+</head>
+<body>
+
+    <h2>WellnessHub Alarm Test</h2>
+    <button onclick="initAlarm()">1. Enable Alarms & Test Sound</button>
+
+    <script>
+        // Use a reliable online sound URL so you don't have to worry about local file paths
+        const alarmSound = new Audio('https://actions.google.com/sounds/v1/alarms/digital_watch_alarm_long.ogg');
+        
+        // Hardcoded reminder matching your UI: 4:28 PM (16:28)
+        const targetTime = "16:28"; 
+
+        function initAlarm() {
+            // Request system notification permission
+            Notification.requestPermission().then(permission => {
+                if (permission === "granted") {
+                    alert("System notifications enabled! Testing sound now...");
+                    alarmSound.play(); // Plays a quick test sound
+                }
+            });
+        }
+
+        function checkTime() {
+            const now = new Date();
+            const currentHours = String(now.getHours()).padStart(2, '0');
+            const currentMinutes = String(now.getMinutes()).padStart(2, '0');
+            const currentTime = `${currentHours}:${currentMinutes}`;
+
+            // If the system clock matches 16:28, trigger the alert
+            if (currentTime === targetTime) {
+                alarmSound.play();
+                new Notification("WellnessHub", {
+                    body: "Time to take your vitamins!",
+                    requireInteraction: true
+                });
+            }
+        }
+
+        // Check the clock every 10 seconds to keep it lightweight
+        setInterval(checkTime, 10000);
+    </script>
+
+</body>
+</html> 
